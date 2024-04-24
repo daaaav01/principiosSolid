@@ -1,0 +1,72 @@
+@startuml
+
+interface ChessPiece {
+    + move()
+}
+
+class Pawn {
+    + move()
+}
+
+class Bishop {
+    + move()
+}
+
+class Rook {
+    + move()
+}
+
+class Knight {
+    + move()
+}
+
+class Queen {
+    + move()
+}
+
+class King {
+    + move()
+}
+
+interface MovementStrategy {
+    + calculatePossibleMoves()
+}
+
+class StandardMovementStrategy {
+    + calculatePossibleMoves()
+}
+
+class CaptureMovementStrategy {
+    + calculatePossibleMoves()
+}
+
+abstract class Board {
+    - pieces: ChessPiece[]
+    + addPiece()
+    + removePiece()
+    + movePiece()
+    + getPieceAt()
+}
+
+class StandardBoard {
+    - pieces: ChessPiece[]
+    + addPiece()
+    + removePiece()
+    + movePiece()
+    + getPieceAt()
+}
+
+ChessPiece <|.. Pawn
+ChessPiece <|.. Bishop
+ChessPiece <|.. Rook
+ChessPiece <|.. Knight
+ChessPiece <|.. Queen
+ChessPiece <|.. King
+
+MovementStrategy <|.. StandardMovementStrategy
+MovementStrategy <|.. CaptureMovementStrategy
+
+Board <|-- StandardBoard
+
+
+@enduml
